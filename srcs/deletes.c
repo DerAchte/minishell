@@ -89,6 +89,7 @@ void	del_all(t_mshell *mshell, char **commands)
 			free(*commands);
 			free(commands);
 		}
+		free(mshell->prev_dir);
 		ft_strdel2(mshell->path_env);
 		delete_list(mshell->env_list);
 	}
