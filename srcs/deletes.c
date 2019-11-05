@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 15:48:27 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/05 11:29:12 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:52:41 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	delete_list(t_envlist *envlist)
 {
 	t_envlist	*tmp;
+
 	while (envlist)
 	{
 		tmp = envlist;
@@ -38,10 +39,12 @@ void	del_1link(t_envlist *envlink)
 	next_lnk = NULL;
 }
 
-void	del_in_loop(t_mshell *mshell)
+void	del_in_loop(t_mshell *mshell, char **commands, char **split)
 {
-	if (mshell)
+	if (mshell && !mshell->exit)
 	{
+		ft_strdel(commands);
+		ft_strdel2(split);
 		delete_ephemere(mshell->env_list);
 		mshell->is_binary = 0;
 		mshell->unvalid = 0;
@@ -92,5 +95,6 @@ void	del_all(t_mshell *mshell, char **commands)
 		free(mshell->prev_dir);
 		ft_strdel2(mshell->path_env);
 		delete_list(mshell->env_list);
+		free(mshell);
 	}
 }

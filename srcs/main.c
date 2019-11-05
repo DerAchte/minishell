@@ -6,11 +6,18 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 15:48:55 by thdervil          #+#    #+#             */
-/*   Updated: 2019/11/05 11:30:38 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:53:19 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	init_var(t_mshell **mshl, char ***s, char ***cmd, char **envp)
+{
+	*s = NULL;
+	*cmd = (char**)malloc(sizeof(char*));
+	*mshl = init_mshell(envp);
+}
 
 int		main(int ac, char **av, char **envp)
 {
@@ -20,32 +27,22 @@ int		main(int ac, char **av, char **envp)
 
 	(void)ac;
 	(void)av;
-	split = NULL;
-	commands = (char**)malloc(sizeof(char*));
-	mshell = init_mshell(envp);
+	init_var(&mshell, &split, &commands, envp);
 	while (!mshell->exit)
 	{
 		write(1, "> ", 2);
 		if (get_next_line(STDIN_FILENO, commands))
 		{
 			if (!commands[0][0])
-			{
 				continue ;
-				ft_strdel(commands);
-			}
 			split = ft_strsplit(*commands, ' ');
 			mshell->commands = trans_cmds(split, mshell);
-			if (mshell->exit)
-				break ;
 			execute(mshell);
-			ft_strdel(commands);
-			ft_strdel2(split);
-			del_in_loop(mshell);
+			del_in_loop(mshell, commands, split);
 		}
 		else
 			break ;
 	}
 	del_all(mshell, commands);
-	free(mshell);
 	return (0);
 }

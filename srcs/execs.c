@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 17:22:20 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/05 11:31:47 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:53:12 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	execute(t_mshell *mshell)
 {
 	pid_t pid;
 
-	if (valid_prog(mshell))
+	if (valid_prog(mshell) && !mshell->exit)
 	{
 		if (mshell->is_binary)
 		{

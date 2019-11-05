@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/11 15:20:27 by thdervil          #+#    #+#             */
-/*   Updated: 2019/11/05 08:56:02 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:03:03 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char		**ft_strsplit(char const *s, char c)
 
 	if (!s || !c || !(*s))
 		return (NULL);
-	if (!(r = (char**)malloc(sizeof(char*) * ((ft_skipchar_countwords(s, c) + 1)))))
+	if (!(r = (char**)malloc(sizeof(char*) * ft_skipchar_countwords(s, c) + 1)))
 		return (NULL);
 	i = 0;
 	k = 0;

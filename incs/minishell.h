@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 15:44:23 by thdervil          #+#    #+#             */
-/*   Updated: 2019/11/05 11:01:31 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 13:08:14 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/types.h>
 # include <dirent.h>
 # include <limits.h>
-#include <sys/wait.h>
+# include <sys/wait.h>
 
 typedef struct				s_envlist
 {
@@ -87,7 +87,7 @@ int							get_size(char **tab);
 char						*ft_splittoone(char **tab);
 void						exec_builtin(t_mshell *mshell);
 void						execute(t_mshell *mshell);
-void						del_in_loop(t_mshell *mshell);
+void						del_in_loop(t_mshell *m, char **c, char **s);
 t_envlist					*init_envlist(char *start);
 t_envlist					*add_env(char *add, int manu, int eph);
 void						delete_ephemere(t_envlist *envlist);

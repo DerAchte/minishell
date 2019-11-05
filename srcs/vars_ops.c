@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 16:00:14 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/03 13:38:17 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 12:19:57 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 char	*create_var(char *s1, char *s2)
 {
-	int 	i;
-	int 	j;
+	int		i;
+	int		j;
 	char	*ret;
 
 	i = 0;

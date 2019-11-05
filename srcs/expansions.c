@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 15:55:00 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/05 09:24:48 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 13:07:23 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	tilde_trans(char **commands, int i, t_envlist *env_list)
 			if (!ft_strcmp("HOME", var_name))
 			{
 				commands[i] = replace_cmd(commands[i], env_list->line);
+				free(var_name);
 				break ;
 			}
 			env_list = env_list->next;
@@ -60,10 +61,9 @@ void	dollar_trans(char **commands, int i, t_envlist *env_list)
 	}
 }
 
-
 char	**trans_cmds(char **commands, t_mshell *mshell)
 {
-	int i;
+	int		i;
 	char	*tmp;
 	char	**ret;
 
@@ -78,7 +78,7 @@ char	**trans_cmds(char **commands, t_mshell *mshell)
 	{
 		if (commands[i][0] == '$')
 			dollar_trans(commands, i, mshell->env_list);
-		if (commands[i][0] == '~')
+		if (commands[i][0] == '~' && ft_strlen(commands[i]) == 1)
 			tilde_trans(commands, i, mshell->env_list);
 		i++;
 	}
