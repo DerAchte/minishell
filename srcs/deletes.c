@@ -6,11 +6,25 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 15:48:27 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/05 08:16:55 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 10:48:02 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+void	delete_list(t_envlist *envlist)
+{
+	t_envlist	*tmp;
+	while (envlist)
+	{
+		tmp = envlist;
+		envlist = envlist->next;
+		ft_strdel(&tmp->line);
+		printf("OUI\n");
+		free(tmp);
+		ft_bzero(tmp, sizeof(*tmp));
+	}
+}
 
 void	del_1link(t_envlist *envlink)
 {
@@ -75,8 +89,7 @@ void	del_all(t_mshell *mshell)
 		if (mshell->env_list)
 			free(mshell->env_list);
 		ft_strdel2(mshell->path_env);
-		if (mshell->whole_env)
-			free(mshell->whole_env);
-		ft_bzero(mshell, sizeof(*mshell));
+		printf("ALLEZ\n");
+		delete_list(mshell->env_list);
 	}
 }
