@@ -31,11 +31,12 @@ char		**ft_strsplit(char const *s, char c)
 
 	if (!s || !c || !(*s))
 		return (NULL);
-	if (!(r = (char**)malloc(sizeof(char*) * ft_skipchar_countwords(s, c) + 1)))
+	if (!(r = (char**)malloc(sizeof(char*) *
+		(ft_skipchar_countwords(s, c) + 1))))
 		return (NULL);
-	i = 0;
+	i = -1;
 	k = 0;
-	while (i < ft_skipchar_countwords(s, c))
+	while (++i < ft_skipchar_countwords(s, c))
 	{
 		j = 0;
 		while (s[k] == c)
@@ -44,7 +45,6 @@ char		**ft_strsplit(char const *s, char c)
 			return (NULL);
 		while (s[k] != c && s[k])
 			r[i][j++] = s[k++];
-		i++;
 	}
 	r[i] = NULL;
 	return (r);

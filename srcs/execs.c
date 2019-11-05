@@ -46,7 +46,7 @@ void	execute(t_mshell *mshell)
 {
 	pid_t pid;
 
-	if (valid_prog(mshell) && !mshell->exit)
+	if (!mshell->exit && valid_prog(mshell))
 	{
 		if (mshell->is_binary)
 		{
