@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 15:44:23 by thdervil          #+#    #+#             */
-/*   Updated: 2019/11/05 09:04:27 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 11:01:31 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void						var_pushback(int manu, int eph,
 							t_envlist *env_list, char *envpath);
 void						cd_no_args(t_mshell *mshell, int i);
 void						cd_minus(t_mshell *mshell);
-void						del_all(t_mshell *mshell);
+void						del_all(t_mshell *mshell, char **commands);
 
 static	const	t_builtin	g_builtins[] =
 {

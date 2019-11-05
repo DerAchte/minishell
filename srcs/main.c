@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/18 15:48:55 by thdervil          #+#    #+#             */
-/*   Updated: 2019/11/05 10:12:58 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 11:03:31 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,14 @@ int		main(int ac, char **av, char **envp)
 			if (mshell->exit)
 				break ;
 			execute(mshell);
-			ft_strdel(commands);
+			free(commands);
 			ft_strdel2(split);
 			del_in_loop(mshell);
 		}
 		else
 			break ;
 	}
-	del_all(mshell);
+	del_all(mshell, commands);
+	free(mshell);
 	return (0);
 }

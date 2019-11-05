@@ -6,7 +6,7 @@
 /*   By: thdervil <thdervil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 15:48:27 by derachte          #+#    #+#             */
-/*   Updated: 2019/11/05 10:48:02 by thdervil         ###   ########.fr       */
+/*   Updated: 2019/11/05 11:01:34 by thdervil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	delete_list(t_envlist *envlist)
 		tmp = envlist;
 		envlist = envlist->next;
 		ft_strdel(&tmp->line);
-		printf("OUI\n");
 		free(tmp);
-		ft_bzero(tmp, sizeof(*tmp));
 	}
 }
 
@@ -82,14 +80,16 @@ void	delete_ephemere(t_envlist *envlist)
 	}
 }
 
-void	del_all(t_mshell *mshell)
+void	del_all(t_mshell *mshell, char **commands)
 {
 	if (mshell)
 	{
-		if (mshell->env_list)
-			free(mshell->env_list);
+		if (mshell->exit)
+		{
+			free(*commands);
+			free(commands);
+		}
 		ft_strdel2(mshell->path_env);
-		printf("ALLEZ\n");
 		delete_list(mshell->env_list);
 	}
 }
