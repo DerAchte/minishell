@@ -19,7 +19,16 @@ void	what_do(t_mshell *mshell, int i)
 	j = 0;
 	while (mshell->commands[i][j] != '=')
 		++j;
-	if (mshell->commands[i][j - 1])
+	if (!ft_isalpha(mshell->commands[i][j - 1]))
+	{
+		ft_putstr_fd("setenv: `", 2);
+		ft_putstr_fd(mshell->commands[i], 2);
+		ft_putstr_fd("': not a valid identifier\n", 2);
+		return ;
+	}
+	if (ft_strlen(mshell->commands[i]) == 1)
+		return ;
+	else
 		env_pushback(1, 1, mshell->env_list, mshell->commands[i]);
 }
 

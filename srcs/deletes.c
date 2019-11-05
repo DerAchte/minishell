@@ -72,14 +72,6 @@ void	del_all(t_mshell *mshell)
 {
 	if (mshell)
 	{
-		if (mshell->builtin)
-			free(mshell->builtin);
-		if (mshell->cd_dir)
-			free(mshell->cd_dir);
-		if (mshell->bin_path)
-			free(mshell->bin_path);
-		if (mshell->commands)
-			free(mshell->commands);
 		if (mshell->env_list)
 			free(mshell->env_list);
 		ft_strdel2(mshell->path_env);
